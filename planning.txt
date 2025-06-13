@@ -1,0 +1,15 @@
+rag_poc/
+├── components/
+|   ├── ingester.py             # ingests in the vector store (orchestration component)
+|   ├── embeddings.py           # creates an embedding for a given text
+|   ├── utils.py                # utility functions like chunking, file save etc. 
+|   ├── query_engine.py         # queries the vector database after embedding generation
+|   └── response_generator.py   # generats a structured response from the vector search response documents 
+├── data/
+|   └── faiss.index             #
+| main_ingest_pdf.py            # ingests a pdf into vector datastore 
+| main_query.py                 # entrypoint to run queries on our vector datastore
+| .gitignore                    # files which are ignored from committing into git
+| .env.example                  # example of how env files looks like
+| .env                          # actual .env file with environment variables   
+| requirements.txt              # python import files
