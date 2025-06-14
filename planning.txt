@@ -1,12 +1,13 @@
 rag_poc/
 ├── components/
 |   ├── ingester.py             # ingests in the vector store (orchestration component)
-|   ├── embedding_generator.py           # creates an embedding for a given text
+|   ├── embedding_generator.py  # creates an embedding for a given text
 |   ├── utils.py                # utility functions like chunking, file save etc. 
 |   ├── query_engine.py         # queries the vector database after embedding generation
-|   └── response_generator.py   # generats a structured response from the vector search response documents 
+|   └── response_generator.py   # generates a structured response from the vector search response documents 
 ├── data/
-|   └── faiss.index             #
+|   ├── text_map.json.          # stores the mapping of chunk index to text
+|   └── faiss.index             # index file that stores the vector index for KNN search
 | main_ingest_pdf.py            # ingests a pdf into vector datastore 
 | main_query.py                 # entrypoint to run queries on our vector datastore
 | .gitignore                    # files which are ignored from committing into git
