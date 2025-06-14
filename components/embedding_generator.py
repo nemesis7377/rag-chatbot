@@ -10,5 +10,7 @@ class EmbeddingGenerator:
             model=self.model, 
             input=text
         )
-        embedding_vector = response.data[0].embedding
+        embedding_vector = []
+        for r in response.data:
+            embedding_vector.append(r.embedding)
         return embedding_vector
