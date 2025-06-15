@@ -15,5 +15,3 @@ def main_query(query):
     response = response_obj.generate_response(query, context_chunks)
     return response
 
-query = input()
-print(main_query(query))
