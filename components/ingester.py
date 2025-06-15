@@ -1,5 +1,5 @@
-import utils
-import embedding_generator
+from . import utils
+from . import embedding_generator
 import faiss
 import numpy as np
 import json
@@ -14,7 +14,7 @@ class Ingester:
         dict = {}
         for i,chunk in enumerate(chunks):
             dict[i] = chunk
-        with open("../data/text_map.json",'w') as f:
+        with open("data/text_map.json",'w') as f:
             json.dump(dict,f)
         embed_obj = embedding_generator.EmbeddingGenerator(self.model, self.api_key)
         embedding_vectors = embed_obj.create_embeddings(chunks)
@@ -22,4 +22,4 @@ class Ingester:
         np_embedding_vectors = np.array(embedding_vectors)
         index = faiss.IndexFlatL2(dimension)
         index.add(np_embedding_vectors)
-        faiss.write_index(index, "../data/index.faiss")
+        faiss.write_index(index, "data/index.faiss")

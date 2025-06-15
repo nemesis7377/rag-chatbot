@@ -6,11 +6,13 @@ class EmbeddingGenerator:
         self.client = OpenAI(api_key = api_key)
 
     def create_embeddings(self, text): 
-        response = self.client.embeddings.create(
-            model=self.model, 
-            input=text
-        )
         embedding_vector = []
-        for r in response.data:
-            embedding_vector.append(r.embedding)
+        for i in range(0,len(text),50):
+            current_text = text[i:i+50]
+            response = self.client.embeddings.create(
+                model=self.model, 
+                input=current_text
+            )
+            for r in response.data:
+                embedding_vector.append(r.embedding)
         return embedding_vector
